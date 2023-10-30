@@ -105,4 +105,4 @@ async def get_event(event_id: str) -> Union[Event, JSONResponse]:
 
 @app.get("/events", response_model=List[Event])
 async def get_events() -> List[Event]:
-    return [event for event in events.values() if event.status == EventStatus.PENDING]
+    return [event for event in events.values() if event.deadline > datetime.now()]
